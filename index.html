@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Secondary 1 Allocation version 20260911</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+		<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		
+		<!-- DataTables CSS -->
+    	<link rel="stylesheet" href="https://cdn.datatables.net/3.0.3/css/dataTables.dataTables.css"/>
+		<script src="https://cdn.datatables.net/3.0.3/js/dataTables.js"></script>
+
+		<script type="module">
+			import { afterDOMLoaded } from './index.js';
+			document.addEventListener('DOMContentLoaded', () => 
+			{
+				afterDOMLoaded();
+			});
+		</script>
+	</head>
+	<body>
+		<p style="font-size: x-large;font-weight:bold;">Data files</p>
+		<table>
+			<tr>
+				<td><label for="postingFileChooser">Posting file:</label></td>
+				<td><input type="file" id="postingFileChooser" name="postingFileChooser"></input></td>
+			</tr>
+			<tr>
+				<td><label for="additionalDataFileChooser">Additional Data File:</label></td>
+				<td><input type="file" id="additionalDataFileChooser" name="Additional Data File"></input></td>
+			</tr>
+		</table>
+		<p style="font-size: x-large;font-weight:bold;">Sorting Criterias <button style="font-size: large" id="addCriteriaButton">Add</button></p>
+		<div id="sortingDiv"></div>
+		<p style="font-size: x-large;font-weight:bold;">Blocks <button style="font-size: large" id="addBlockButton">Add</button></p>
+		<div id="blocksDiv"></div>
+		<p><button style="font-size: x-large" type="button" id="generateButton" disabled>Generate</button>
+		<div id="progressDiv" style="display:none;">
+			<div id="messageDiv"></div>
+			<div><progress id="progressBar" value="0" max="100"></progress></div>
+		</div>
+		<div id="output"></div>
+		<div id="saveDiv" style="display:none;"><p><button style="font-size: x-large" type="button" id="saveButton">Save</button></div>
+	</body>
+</html>

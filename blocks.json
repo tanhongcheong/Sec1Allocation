@@ -1,0 +1,162 @@
+[
+    {
+        "name": "Block A",
+        "classNames": [
+            "Class1",
+            "Class2",
+            "Class3",
+            "Class4"
+        ],
+        "constraints": [
+            {
+                "column": "POST-CAT",
+                "inList": [
+                    "PG1",
+                    "PG2",
+                    "PG3"
+                ],
+                "number": 153
+            },
+            {
+                "column": "POST-CAT",
+                "equals": "PG1",
+                "number": 20
+            },
+            {
+                "column": "POST-CAT",
+                "equals": "PG2",
+                "number": 40
+            },
+            {
+                "column": "POST-CAT",
+                "equals": "PG3",
+                "number": 120
+            },
+            {
+                "column": "ENGLISH_LEVEL",
+                "startsWith": "G1",
+                "number": 0
+            },
+            {
+                "column": "ENGLISH_LEVEL",
+                "startsWith": "G2",
+                "number": 80
+            },
+            {
+                "column": "ENGLISH_LEVEL",
+                "startsWith": "G3",
+                "number": 110
+            },
+            {
+                "column": "MATH_LEVEL",
+                "startsWith": "G1",
+                "number": 40
+            },
+            {
+                "column": "MATH_LEVEL",
+                "startsWith": "G2",
+                "number": 40
+            },
+            {
+                "column": "MATH_LEVEL",
+                "startsWith": "G3",
+                "number": 120
+            },
+            {
+                "column": "SCIENCE_LEVEL",
+                "startsWith": "G1",
+                "number": 40
+            },
+            {
+                "column": "SCIENCE_LEVEL",
+                "startsWith": "G2",
+                "number": 40
+            },
+            {
+                "column": "SCIENCE_LEVEL",
+                "startsWith": "G3",
+                "number": 120
+            }
+        ]
+    },
+    {
+        "name": "Block B",
+        "classNames": [
+            "Class5",
+            "Class6",
+            "Class7",
+            "Class8"
+        ],
+        "constraints": [
+            {
+                "column": "POST-CAT",
+                "inList": [
+                    "PG1",
+                    "PG2",
+                    "PG3"
+                ],
+                "number": 153
+            },
+            {
+                "column": "POST-CAT",
+                "equals": "PG1",
+                "number": 20
+            },
+            {
+                "column": "POST-CAT",
+                "equals": "PG2",
+                "number": 80
+            },
+            {
+                "column": "POST-CAT",
+                "equals": "PG3",
+                "number": 80
+            },
+            {
+                "column": "ENGLISH_LEVEL",
+                "startsWith": "G1",
+                "number": 40
+            },
+            {
+                "column": "ENGLISH_LEVEL",
+                "startsWith": "G2",
+                "number": 80
+            },
+            {
+                "column": "ENGLISH_LEVEL",
+                "startsWith": "G3",
+                "number": 80
+            },
+            {
+                "column": "MATH_LEVEL",
+                "startsWith": "G1",
+                "number": 40
+            },
+            {
+                "column": "MATH_LEVEL",
+                "startsWith": "G2",
+                "number": 80
+            },
+            {
+                "column": "MATH_LEVEL",
+                "startsWith": "G3",
+                "number": 80
+            },
+            {
+                "column": "SCIENCE_LEVEL",
+                "startsWith": "G1",
+                "number": 40
+            },
+            {
+                "column": "SCIENCE_LEVEL",
+                "startsWith": "G2",
+                "number": 80
+            },
+            {
+                "column": "SCIENCE_LEVEL",
+                "startsWith": "G3",
+                "number": 80
+            }
+        ]
+    }
+]
