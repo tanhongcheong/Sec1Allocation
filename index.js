@@ -5,6 +5,7 @@ import { saveAllocation } from './Utilities.js';
 
 let postingFileBinary = null;
 let additionalDataFileBinary = null;
+let mdlFileBinary = null;
 
 const possibleColumnsValues = headers.toSorted();
 const possibleCriterias =[
@@ -18,12 +19,8 @@ const possibleCriterias =[
 //global variables
 let students = null;
 
-/*function isNumeric(str)
-{
-	if (typeof str !== 'string') return false; // Ensure it's a string
-	return str.trim() !== '' && !isNaN(Number(str));
-}*/
 
+//copied from Google search
 function isDigitsOnly(str)
 {
 	return /^\d+$/.test(str);
@@ -47,7 +44,41 @@ function setPostingFileInputListener()
 				const arrayBuffer = await file.arrayBuffer();
 				// Wrap it in a DataView or TypedArray to manipulate the bytes
 				postingFileBinary = new Uint8Array(arrayBuffer);
-				document.getElementById('generateButton').disabled = false;
+				if (mdlFileBinary!=null && postingFileBinary!=null)
+				{
+					document.getElementById('generateButton').disabled = false;
+				}
+			}
+			catch (error)
+			{
+				console.error("Error reading ",file, error);
+			}
+		}
+	});
+}
+
+function setMDLFileInputListener()
+{
+	const mdlFileInput = document.getElementById('mdlFileChooser');
+	mdlFileInput.addEventListener('change', async (event) =>
+	{
+		const file = event.target.files[0]; // Get the selected file
+		if (!file)
+		{
+			return;
+		}
+		else
+		{
+			try
+			{
+				// Read the file as an ArrayBuffer (raw binary data)
+				const arrayBuffer = await file.arrayBuffer();
+				// Wrap it in a DataView or TypedArray to manipulate the bytes
+				mdlFileBinary = new Uint8Array(arrayBuffer);
+				if (mdlFileBinary!=null && postingFileBinary!=null)
+				{
+					document.getElementById('generateButton').disabled = false;
+				}
 			}
 			catch (error)
 			{
@@ -183,6 +214,11 @@ function getSortingCriteria()
 function setGenerateButtonListener()
 {
 	const generateButton = document.getElementById('generateButton');
+	/*generateButton.addEventListener('click', async (event) =>
+	{
+		let posting = new Posting(postingFileBinary,mdlFileBinary,additionalDataFileBinary,stats,blocks);
+		const numberNotAllocated = posting.allocateStudents();
+	});*/
 	
 	generateButton.addEventListener('click', async (event) =>
 	{
@@ -193,6 +229,7 @@ function setGenerateButtonListener()
 		const w = new Worker(new URL('./Worker.js', import.meta.url), { type: 'module' });
 		w.postMessage({
 			postingFileBinary : postingFileBinary,
+			mdlFileBinary : mdlFileBinary,
 			additionalDataFileBinary : additionalDataFileBinary,
 			stats : newStats,
 			blocks: newBlocks
@@ -598,7 +635,8 @@ function save()
 
 export function afterDOMLoaded()
 {
-	setPostingFileInputListener();				
+	setPostingFileInputListener();		
+	setMDLFileInputListener();		
 	setAdditionalFataFileInputListener();
 	setGenerateButtonListener();
 	createSortingDiv();

@@ -21,15 +21,17 @@ export class Posting extends EventTarget
     /**
      * 
      * @param {raw xlsxBinaryFile} postingFileBinary the binary content of the posting file
+     * @param {raw xlsxBinaryFile} mdlFileBinary the binary content of the MDL data file
      * @param {raw xlsxBinaryFile} additionalDataFileBinary the binary content of the addition data file
      * @param {JSON} stats the JSON object that contains the columns to be used to calculate score
      * @param {Array} blocks the JSON object that contains the blocks and the constraint for each block
      */
-    constructor(postingFileBinary,additionalDataFileBinary,stats,blocks)
+    constructor(postingFileBinary,mdlFileBinary,additionalDataFileBinary,stats,blocks)
     {
         super();
         //read the posting file
-        this.#students = this.#readPosting(postingFileBinary);  
+        this.#students = this.#readPosting(postingFileBinary);
+        
         for(let student of this.#students)
         {
             const ic = student["NRIC"];
@@ -42,6 +44,8 @@ export class Posting extends EventTarget
             student["CLASS_ASSIGNED"]="unassigned";
             student["COMMENT"]="";
         }
+
+        this.#readMDL(mdlFileBinary)
 
         //sort the students by nric
         this.#students.sort((a, b) => a["NRIC"].localeCompare(b["NRIC"]));
@@ -233,6 +237,46 @@ export class Posting extends EventTarget
         }
     }
 
+    //copied from Google Search
+    isOnlyDigits(str)
+    {
+        return /^\d+$/.test(str);
+    }
+
+    /**
+     * Update the PG
+     * @param {raw Buffer} mdlFileBinary 
+     */
+    #readMDL(mdlFileBinary)
+    {
+        const workbook = XLSX.read(mdlFileBinary);
+        //Get the name of the first sheet
+        const firstSheetName = workbook.SheetNames[0];
+        //Get the data from the first sheet
+        const worksheet = workbook.Sheets[firstSheetName];
+        //Convert the sheet data to 2D array
+        const data = XLSX.utils.sheet_to_json(worksheet,{ header: 1 });
+        let map = new Object();
+        for(let row of data)
+        {
+            if (this.isOnlyDigits(row[0]))
+            {
+                const ic = row[3];
+                const pg = "P"+row[5];
+                map[ic] = pg;
+            }            
+        }
+        for(let student of this.#students)
+        {
+            const ic = student["NRIC"];
+            if (map[ic]!=undefined)
+            {
+                student["POST-CAT"] = map[ic];
+                //console.log("Updated "+ic+" pg to "+map[ic]);
+            }
+        }
+    }
+
     /**
      * 
      * @param {raw Buffer} postingFileBinary 
@@ -244,8 +288,24 @@ export class Posting extends EventTarget
         // Fetch the name of the first worksheet
         const firstSheetName = workbook.SheetNames[0];	
         const worksheet = workbook.Sheets[firstSheetName];
-        const namedArray = XLSX.utils.sheet_to_json(worksheet);
-        return namedArray;
+        const students = XLSX.utils.sheet_to_json(worksheet);
+        //original posting file numbers are stored as string
+        //convert all numbers
+        for(let student of students)
+        {
+            let keys = Object.keys(student);
+            keys.forEach(key => {
+                if (this.isOnlyDigits(student[key]))
+                {
+                    student[key] = parseInt(student[key])
+                }
+                else
+                {
+                    student[key] = student[key].trim();
+                }
+            });
+        }
+        return students;
     }
 
     /**
@@ -828,7 +888,7 @@ export class Posting extends EventTarget
                     best["student"] = student;
                 }
             }
-            if (best["student"]!=undefined)
+            if (best["bestClass"]!="")
             {
                 this.#assignClass(best["student"],best["bestClass"]);
                 unassignedStudents.splice(unassignedStudents.indexOf(best["student"]), 1);////remove from unassigned list
