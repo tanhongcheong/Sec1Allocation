@@ -32,8 +32,12 @@ The file has four fields:
 For example, if you want to add the CCA the DSA student is under, you can add:\
 Student's NRIC,Student's Name,DSA_IND,Y (Basketball)
 
-The code also accept column named "COMMENT" where you can add comment to student. For example:\
+You can also add comment to student. For example:\
 Student's NRIC,Student's Name,COMMENT,Twins 1
+
+In my school, some students are assigned a particular class. This can be achieved by:
+Student's NRIC,Student's Name,CLASS_ASSIGNED,Class1\
+will assign the students to Class1, the algorithm will not reassign the student to other class.
 
 # Using the webpage
 
@@ -68,6 +72,8 @@ In my school, I will append the CCA after Y to denote the student's CCA.\
 If you did not change the DSA_IND value, DSA_IND,equals,Y will work.
 10. CITIZEN_DESC,doesNotStartsWith,SINGAPORE
 This means the algorithm will attempt to evenly distribute foreign students to the classes.
+
+The algorithm will attempt the distribute the students based on their primary school. This cannot be disabled.
 
 ## Step 3: Blocks setup
 The default configuration has two blocks of 4 classes each.\
