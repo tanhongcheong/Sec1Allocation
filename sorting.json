@@ -12,6 +12,14 @@
         "equals": "PG3"
     },
     {
+        "column": "POST-CAT",
+        "inList": [
+            "PG1",
+            "PG2",
+            "PG3"
+        ]
+    },
+    {
         "column": "SEX",
         "equals": "F"
     },
@@ -22,14 +30,6 @@
     {
         "column": "PRIMARY_RACE",
         "equals": "IN"
-    },
-    {
-        "column": "POST-CAT",
-        "inList": [
-            "PG1",
-            "PG2",
-            "PG3"
-        ]
     },
     {
         "column": "PRIMARY_RACE",
@@ -46,25 +46,5 @@
     {
         "column": "CITIZEN_DESC",
         "doesNotStartWith": "SINGAPORE"
-    },
-    {
-        "column": "CITIZEN_DESC",
-        "startsWith": "SINGAPORE PR"
-    },
-    {
-        "column":"PRI-SCH-NAME",
-        "equals":"ST. ANTHONY'S PRIMARY SCHOOL"
-    },
-    {
-        "column":"PRI-SCH-NAME",
-        "equals":"CHUA CHU KANG PRIMARY SCHOOL"
-    },
-    {
-        "column":"PRI-SCH-NAME",
-        "equals":"SOUTH VIEW PRIMARY SCHOOL"
-    },
-    {
-        "column":"PRI-SCH-NAME",
-        "equals":"DAZHONG PRIMARY SCHOOL"
-    }
+    }    
 ]

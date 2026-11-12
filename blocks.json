@@ -15,7 +15,7 @@
                     "PG2",
                     "PG3"
                 ],
-                "number": 153
+                "number": 150
             },
             {
                 "column": "POST-CAT",
@@ -30,12 +30,12 @@
             {
                 "column": "POST-CAT",
                 "equals": "PG3",
-                "number": 120
+                "number": 80
             },
             {
                 "column": "ENGLISH_LEVEL",
                 "startsWith": "G1",
-                "number": 0
+                "number": 40
             },
             {
                 "column": "ENGLISH_LEVEL",
@@ -45,7 +45,7 @@
             {
                 "column": "ENGLISH_LEVEL",
                 "startsWith": "G3",
-                "number": 110
+                "number": 120
             },
             {
                 "column": "MATH_LEVEL",
@@ -55,7 +55,7 @@
             {
                 "column": "MATH_LEVEL",
                 "startsWith": "G2",
-                "number": 40
+                "number": 80
             },
             {
                 "column": "MATH_LEVEL",
@@ -70,7 +70,7 @@
             {
                 "column": "SCIENCE_LEVEL",
                 "startsWith": "G2",
-                "number": 40
+                "number": 80
             },
             {
                 "column": "SCIENCE_LEVEL",
@@ -95,7 +95,7 @@
                     "PG2",
                     "PG3"
                 ],
-                "number": 153
+                "number": 150
             },
             {
                 "column": "POST-CAT",
@@ -105,7 +105,7 @@
             {
                 "column": "POST-CAT",
                 "equals": "PG2",
-                "number": 80
+                "number": 40
             },
             {
                 "column": "POST-CAT",
@@ -125,7 +125,7 @@
             {
                 "column": "ENGLISH_LEVEL",
                 "startsWith": "G3",
-                "number": 80
+                "number": 120
             },
             {
                 "column": "MATH_LEVEL",
@@ -140,7 +140,7 @@
             {
                 "column": "MATH_LEVEL",
                 "startsWith": "G3",
-                "number": 80
+                "number": 120
             },
             {
                 "column": "SCIENCE_LEVEL",
@@ -155,7 +155,7 @@
             {
                 "column": "SCIENCE_LEVEL",
                 "startsWith": "G3",
-                "number": 80
+                "number": 120
             }
         ]
     }
