@@ -12,5 +12,5 @@ You can access the webpage at https://tanhongcheong.github.io/Sec1Allocation/.
 ![Download Summary Report for Subjects at MDL (Final).bmp](https://github.com/user-attachments/files/34723071/Download.Summary.Report.for.Subjects.at.MDL.Final.bmp)
 
 #Additional data
-You can replace student's data. A sample template of the excel file can be downloaded from
+You can replace student's data. A sample template of the excel file can be downloaded [Additional Data Template File.xlsx](Additional Data Template File.xlsx).
 
